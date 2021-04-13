@@ -2,35 +2,32 @@
 using namespace std;
 
 int main(){
-    int n;
-    cin>>n;
-    int arr[n];
+    int n, m;
+    cin>>n>>m;
 
-    for(int i=0; i<n; i++)
-        cin>>arr[i];
+    int a[n], b[m];
+    for(int i=0; i<n; i++) cin>>a[i];
+    for(int i=0; i<m; i++) cin>>b[i];
 
-    int maxR = arr[0];
-    int step = arr[0];
-    int jumps = 1;
+    for(int i=m-1; i>0; i--){
+        int j;
+        int last = a[n-1];
 
-    if(n==1)
-        cout<<0;
-    else if(arr[0]==0)
-        cout<<-1;
-    else{
-        for(int i=1; i<n; i++){
-            if(i==n-1)
-                cout<<jumps;
-            maxR = max(maxR, arr[i]+i);
-            step--;
-            if(step==0){
-                jumps++;
-                if(i>=maxR){
-                    cout<<-1;
-                }
-                step = maxR-1;
-            }
+        for(j=n-2; j>=0 && a[j] > b[i]; j--){
+            a[j+1] = a[j];
+
         }
         
+        if(j!=n-2 || last>b[i]){
+            a[j+1] = b[i];
+            b[i] = last;
+        }        
+    }
+
+    for(int i=0; i<n; i++){
+        cout<<a[i];
+    }   
+    for(int i=0; i<m; i++){
+        cout<<b[i];
     }
 }
