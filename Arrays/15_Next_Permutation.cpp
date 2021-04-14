@@ -10,6 +10,7 @@ void reverse(int arr[], int start, int end){
         end--;
     }
 }
+
 int main(){
     int n;
     cin>>n;
@@ -24,7 +25,6 @@ int main(){
     if(i>=0){
         int j= n-1;
         while(arr[j]<=arr[i]) j--;
-
         swap(arr[i], arr[j]);
     }
 
