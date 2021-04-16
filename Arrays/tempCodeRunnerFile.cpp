@@ -3,24 +3,47 @@ using namespace std;
 
 int main(){
 
-    int n, sum;
-    cin>>n>>sum;
-    int arr[n];
+    int n;
+    cin>>n;
 
-    for(int i=0; i<n; i++) cin>>arr[i];
+    int a[n];
+    for(int i=0; i<n; i++) cin>>a[i];
 
-    unordered_map<int, int> m;
-    int count = 0;
+    int i=0;
+    int j=n-1;
 
-    for(int i=0; i<n; i++){
+    while(i<=j){
         
-        int diff = sum - arr[i];
-        if(m[diff] == 0){
-            m[arr[i]]++;
-        }else{
-            count += m[diff];
-            m[arr[i]]++;
+        if(a[i]<0 && a[j]>0){
+            swap(a[i], a[j]);
+            i++;
+            j--;
+        }else if(a[i]>0 && a[j]<0){
+            i++;
+            j--;
+        }else if(a[i]>0){
+            i++;
+        }else if(a[j]<0){
+            j--;
+        }
+
+        
+    }
+    
+    
+    if(i==0 || i==n){
+        for(int p=0; p<n; p++) cout<<a[p]<<" ";
+    }else{
+        int k=0;
+        while(i<n and k<n){
+            swap(a[k], a[i]);
+            k+=2;
+            i++;
         }
     }
-    cout<<count;
+    
+   
+
+    for(int i=0; i<n; i++)
+        cout<<a[i];
 }
