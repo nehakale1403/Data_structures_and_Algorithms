@@ -6,44 +6,31 @@ int main(){
     int n;
     cin>>n;
 
-    int a[n];
-    for(int i=0; i<n; i++) cin>>a[i];
+    int arr[100000] = {0};
+    arr[0] = 1;
+    int q=2;
+    int len = 1;
+    int x = 0;
+    int num = 0;
 
-    int i=0;
-    int j=n-1;
-
-    while(i<=j){
+    while(q<=n){
         
-        if(a[i]<0 && a[j]>0){
-            swap(a[i], a[j]);
-            i++;
-            j--;
-        }else if(a[i]>0 && a[j]<0){
-            i++;
-            j--;
-        }else if(a[i]>0){
-            i++;
-        }else if(a[j]<0){
-            j--;
+        x=0;
+        num=0;
+        while(x<len){
+            arr[x] = arr[x] * q;
+            arr[x] = arr[x]+num;
+            num = arr[x]/10;
+            arr[x] = arr[x]%10;
+            x++;
         }
-
-        
-    }
-    
-    
-    if(i==0 || i==n){
-        for(int p=0; p<n; p++) cout<<a[p]<<" ";
-    }else{
-        int k=0;
-        while(i<n and k<n){
-            swap(a[k], a[i]);
-            k+=2;
-            i++;
+        while(num!=0){
+            arr[len] = num%10;
+            num = num/10;
+            len++;
         }
+        q++;
     }
-    
-   
-
-    for(int i=0; i<n; i++)
-        cout<<a[i];
+    for(int i=len-1; i>=0; i--)
+        cout<<arr[i];
 }
