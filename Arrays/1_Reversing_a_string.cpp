@@ -1,10 +1,10 @@
-
+#include<bits/stdc++.h>
+using namespace std;
 
 //User function Template for C++
 
 string reverseWord(string str){
-    
-  //Your code here
+
   int n=str.length();
   char temp;
   int i=0, j=n-1;
@@ -17,4 +17,11 @@ string reverseWord(string str){
   }
   
   return str;
+}
+
+int main(){
+  string str;
+  cin>>str;
+  cout<<reverseWord(str);
+  return 0;
 }
