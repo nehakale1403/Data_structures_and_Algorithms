@@ -36,3 +36,6 @@ int main(){
     maxProfit(price, n);
     
 }
+
+//METHOD 2 IS OF DYNAMIC PROGRAMMING
+//https://www.geeksforgeeks.org/maximum-profit-by-buying-and-selling-a-share-at-most-twice/
