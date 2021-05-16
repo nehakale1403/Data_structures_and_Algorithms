@@ -1,3 +1,5 @@
+// https://www.youtube.com/watch?v=SA867FvqHrM&ab_channel=NickWhite
+
 #include<bits/stdc++.h>
 using namespace std;
 
