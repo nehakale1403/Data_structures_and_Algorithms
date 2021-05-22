@@ -29,7 +29,11 @@ void search(string pat, string txt, int q){
     //Sliding the pattern over text one by one
     for(i=0; i<=n-m; i++){
 
+        // Check the hash values of current window of text 
+        // and pattern. If the hash values match then only 
+        // check for characters on by one 
         if(p==t){
+            /* Check for characters one by one */
             for(j=0; j<m; j++){
                 if(txt[i+j] != pat[j])
                     break;
@@ -39,6 +43,8 @@ void search(string pat, string txt, int q){
                 cout<<"Pattern found at index "<<i<<endl;
         }
 
+        // Calculate hash value for next window of text: Remove 
+        // leading digit, add trailing digit 
         if(i< n-m){
             t = (d*(t- txt[i]*h) + txt[i+m]) %q;
 
