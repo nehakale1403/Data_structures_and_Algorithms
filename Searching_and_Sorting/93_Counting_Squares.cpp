@@ -1,6 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/* IMPPP
+countSquares(int n){
+    int root = sqrt(n);
+    if(root*root == n) return root-1;
+    else return root;
+}
+*/
+
 int main(){
     int n;
     cin>>n;
