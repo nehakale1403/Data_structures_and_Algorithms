@@ -3,26 +3,23 @@ using namespace std;
 
 int countSubarray(int arr[], int n){
 
-    
-    int prefix_sum[n];
     int count=0;
-    prefix_sum[0] = arr[0];
-
-    for(int i=1; i<n; i++){     
-        prefix_sum[i] = prefix_sum[i-1]+arr[i]; 
-    }
-
+    int i=-1;
+    int sum=0;
     unordered_map<int, int> map;
-    
-    for(){
-        int c = it.second;
+    map[0]=1;
+    while(i<n-1){
+        i++;
+        sum+=arr[i];
+        if(map.find(sum) != map.end()){
 
-        count+=(c*(c-1))/2;
-
-        if(it.first == 0){
-            count+=it.second
+            count+=map[sum];
+            map[sum]++;
+        }else{
+            map[sum]++;
         }
     }
+    
     return count;
 
 }
