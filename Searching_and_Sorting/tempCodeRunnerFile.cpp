@@ -1,0 +1,1 @@
+stable_sort(arr, arr+n, comparator);
