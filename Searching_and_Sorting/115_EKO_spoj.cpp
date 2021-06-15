@@ -5,6 +5,7 @@ bool solve(int arr[], int n, int req, int mid){
 
     int sum = 0;
     for(int i=0; i<n; i++){
+        
         if(arr[i]>mid){
             sum+=(arr[i]-mid);
         }
