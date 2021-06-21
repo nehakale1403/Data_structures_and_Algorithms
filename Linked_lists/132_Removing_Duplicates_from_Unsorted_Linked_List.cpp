@@ -69,7 +69,6 @@ int main(){
     insertAtTail(head, 3);
     insertAtTail(head, 2);
     insertAtTail(head, 3);
-    // display(head);
     removeDuplicates(head);
     display(head);
     return 0;
