@@ -59,38 +59,46 @@ void reverse(node* &head){
 
 void segregateEvenOdd(node* &head, int n){
 
-    node *p = head;
-    node *q = NULL;
-    node *odd = head;
+    node *curr = head;
+    node *prev = NULL;
+    node *end = head;
     int count=0;
     
-    while(odd->next!=NULL){
-        odd = odd->next;
+    while(end->next!=NULL){
+        end = end->next;
     }
-    while(p!=NULL && count<n){
     
-        if(p->data %2 == 0){
-            q = p;
-            p = p->next;
-            
-        }else{
-            if(p == head){
-                head = p->next;
-                odd->next = p;
-                p->next = NULL;
-                odd = p;
-                p = head;
+    node *new_end = end;
+    while(curr->data%2 != 0 && curr!=end){
+        new_end->next = curr;
+        curr = curr->next;
+        new_end->next->next = NULL;
+        new_end = new_end->next;
+    }
+    if(curr->data%2 == 0){
+        head = curr;
+        while(curr!=end){
+            if(curr->data%2 == 0){
+                prev = curr;
+                curr = curr->next;
             }else{
-                q->next= p->next;
-                odd->next = p;
-                p->next = NULL;
-                odd = p;
-                p = q->next;
+                prev->next = curr->next;
+                new_end->next = curr;
+                curr->next = NULL;
+                new_end = curr;
+                curr = prev->next;
             }
         }
-        count++;
-        display(head);
+    }else{
+        prev = curr;
     }
+
+    if(new_end!=end && end->data%2 != 0){
+        prev->next = end->next;
+        end->next = NULL;
+        new_end->next = end;
+    }
+
     display(head);
 }
 
