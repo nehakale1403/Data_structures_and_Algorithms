@@ -14,7 +14,7 @@ class node{
     }
 };
 
-void leftView(node *root){
+void topView(node *root){
 
     if(root == NULL)    
         return;
@@ -38,7 +38,6 @@ void leftView(node *root){
                 q.push(temp->right);
         }
     }
-    
 }
 
 int main(){
@@ -52,6 +51,6 @@ int main(){
     root->right->right = new node(7);
     
 
-    leftView(root);
+    topView(root);
     
 }
