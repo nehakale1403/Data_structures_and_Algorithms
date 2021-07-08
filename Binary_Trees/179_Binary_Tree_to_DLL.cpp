@@ -23,7 +23,7 @@ void printDLL(node* head){
 }
 
 void solve(node* root, node* &head, node* &prev, int &f){
-    if(!root) return;
+    if(root == NULL) return;
 
     solve(root->left, head, prev, f);
     if(f == 0){
@@ -39,12 +39,14 @@ void solve(node* root, node* &head, node* &prev, int &f){
 }
 
 node* convertToDLL(node* root){
+
     node* head = NULL;
     node* prev = NULL;
 
     int f = 0;
     solve(root, head, prev, f);
     return head;
+
 }
 
 int main(){
