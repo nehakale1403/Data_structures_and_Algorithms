@@ -21,7 +21,7 @@ node* kthAncestor(node* root, int n, int &k){
     if(!root) return NULL;
 
     if(root->data == n || (temp = kthAncestor(root->left, n, k)) || (temp = kthAncestor(root->right, n, k))){
-        cout<<k<<endl;
+
         if(k>0){
             k--;
         }else if(k==0){
