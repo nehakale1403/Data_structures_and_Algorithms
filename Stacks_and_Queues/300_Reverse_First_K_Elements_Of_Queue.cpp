@@ -20,7 +20,6 @@ void reverseK(queue<int> &q, int k, int n){
     }
 }
 
-
 int main(){
     int n;
     cin>>n;
