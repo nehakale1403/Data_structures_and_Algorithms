@@ -16,7 +16,6 @@ int sumOfKSubarrays(int arr[], int n, int k){
         g.push_back(i);
         s.push_back(i);
     }
-
     for(; i<n; i++){
 
         sum += arr[s.front()]+ arr[g.front()];
