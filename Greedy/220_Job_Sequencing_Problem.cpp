@@ -30,7 +30,6 @@ vector<int> maxProfit(job arr[], int n){
     return {day, profit};
 }
 
-
 int main(){
 
     int n;
@@ -46,5 +45,5 @@ int main(){
     }
     
     vector<int> ans = maxProfit(arr, n);
-    cout<<ans[0]<<" "<<ans[1];
+    cout<<ans[0]<<" -  "<<ans[1];
 }
