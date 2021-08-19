@@ -31,4 +31,4 @@ int main(){
     cin>>k;
 
     cout<<maxStocks(arr, n, k);
-}
+}   
