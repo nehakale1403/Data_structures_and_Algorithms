@@ -10,8 +10,6 @@ bool isSafe(int** arr, int x, int y, int n){
 
 bool ratInMaze(int** arr, int n, int x, int y, int** solArr){
 
-    cout<<"here"<<endl;
-
     if(x == n-1 && y == n-1){
         solArr[x][y] = 1;
         return true;
