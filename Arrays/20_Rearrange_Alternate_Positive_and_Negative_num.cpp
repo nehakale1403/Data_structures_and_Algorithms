@@ -11,7 +11,7 @@ int main(){
 
     int i=0;
     int j=n-1;
-
+    //sorting the elements in decreasing order
     while(i<=j){
         
         if(a[i]<0 && a[j]>0){
@@ -26,7 +26,6 @@ int main(){
         }else if(a[j]<0){
             j--;
         }
-
         
     }
     
