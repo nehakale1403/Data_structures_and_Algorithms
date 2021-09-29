@@ -8,21 +8,19 @@ int main(){
     int arr[n];
     for(int i=0; i<n; i++) cin>>arr[i];
 
-    int div = n/k;
-    sort(arr, arr+n);
-    int count=1;
-    int final_count=0;
-    int i=0;
-    while(i<n){
-        while(arr[i] == arr[i+1]){
-            count++;
-            i++;
+    map<int, int> mp;
+        int p = n/k;
+        int count=0;
+        for(int i=0; i<n; i++){
+            mp[arr[i]]++;
         }
-        if(count>div){
-            final_count++;
+        
+        for(auto it: mp){
+            if(it.second > p){
+                
+                count++;
+            }
         }
-        count=1;
-        i++;
-    }
-    cout<<final_count;
+        
+    cout<<count;
 }
