@@ -15,7 +15,9 @@ int main(){
     unordered_map<int, int> m;
     for(int i=0; i<n; i++){
         sum = sum+arr[i];
-        if(sum == 0 or arr[i] == 0 or m[sum]){ //m[s] means the sum number already exists  in the map
+        if(sum == 0 or arr[i] == 0 or m[sum]){ 
+            //m[s] means the sum number already exists  in the map
+            //it means that the subarray is having sum as 0 bcz the sum is getting repeated
             flag=1;
             break;
         }else{
