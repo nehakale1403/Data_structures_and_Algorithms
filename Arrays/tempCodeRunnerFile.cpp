@@ -1,24 +1,39 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int main(){
-    int n;
-    cin>>n;
+int getMinDifference(int arr[], int n, int k){
+    
+    sort(arr, arr+n);
 
-    bool arr[n][n];
-    for(int i=0; i<n; i++){
-        for(int j=0; j<n; j++){
-            cin>>arr[i][j];
-        }
+    int ans = arr[n-1] - arr[0];
+
+    int smallest = arr[0]+k;
+    int largest = arr[n-1]-k;
+    int minimum, maximum;
+
+    for(int i=0; i<n-1; i++){
+        cout<<"For: i = "<<i<<endl;
+        cout<<"Ans: "<<ans<<endl;
+        cout<<smallest<<" "<<largest<<" ";
+
+        minimum = min(smallest, arr[i+1]-k);
+        maximum = max(largest, arr[i]+k);
+        if(minimum<0)
+            continue;
+        ans = min(ans, maximum-minimum);
+        cout<<endl;
     }
+    return ans;
+}
 
-    int maxval = INT_MIN;
-    for(int a=0; a<n-1; a++)
-        for(int b=0; b<n-1; b++)
-            for(int d=a+1; d<n; d++)
-                for(int e=b+1; e<n; e++)
-                    if(maxval < (arr[d][e]-arr[a][b]))
-                        maxval = arr[d][e]-arr[a][b];
+int main(){
+    int n, k;
+    cin>>n>>k;
 
-    cout<<maxval;
+    int arr[n];
+    for(int i=0; i<n; i++)
+        cin>>arr[i];
+    
+    cout<<getMinDifference(arr, n, k);
+
 }

@@ -13,15 +13,14 @@ int main(){
 
     unordered_map<int, int> m1, m2, m3;
 
-    for(int i=0; i<n1; i++) m1[a[i]]++;
-    for(int i=0; i<n2; i++) m2[b[i]]++;
-    for(int i=0; i<n3; i++) m3[c[i]]++;
+    for(int i=0; i<n1; i++) m1[a[i]]=1;
+    for(int i=0; i<n2; i++) m2[b[i]]=1;
 
     vector<int> res;
-    for(int i=0; i<n1; i++){
-        if(m1[a[i]] && m2[a[i]] && m3[a[i]]){
-            res.push_back(a[i]);
-            m1[a[i]] = 0;
+    for(int i=0; i<n3; i++){
+        if(m1[c[i]] == 1 && m2[c[i]] == 1){
+            res.push_back(c[i]);
+            m1[c[i]] = 0;
         }
     }
     for(int i=0;i<res.size(); i++){
