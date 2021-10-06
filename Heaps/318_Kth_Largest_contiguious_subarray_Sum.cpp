@@ -9,8 +9,6 @@ int kthLargestSum(int arr[], int n, int k){
         sum[i] = sum[i-1] + arr[i-1];
     }
 
-    for(int i=0; i<n+1; i++)
-        cout<<sum[i]<<" ";
     priority_queue<int, vector<int>, greater<int>> q;
 
     for(int i=1; i<=n; i++){
