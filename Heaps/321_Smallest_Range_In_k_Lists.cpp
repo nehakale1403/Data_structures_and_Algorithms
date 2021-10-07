@@ -19,8 +19,7 @@ struct MinHeapNode {
  
 // Prototype of a utility function to swap two min heap nodes
 void swap(MinHeapNode* x, MinHeapNode* y);
- 
-// A class for Min Heap
+
 class MinHeap {
  
     // pointer to array of elements in heap
