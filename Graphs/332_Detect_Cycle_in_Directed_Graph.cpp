@@ -1,33 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool isCyclicUtil(vector<int> adj[], vector<int> visited, int curr){
-    if(visited[curr] == 1)
-        return true;
-    
-    visited[curr] = 1;
-    bool flag = false;
-    for(int i=0; i<adj[curr].size(); i++){
-        flag = isCyclicUtil(adj, visited, adj[curr][i]);
-        if(flag == true)
+bool dfs(vector<int> adj[], vector<int> &visited, int s, vector<int> &rest){
+
+    visited[s]=true;
+    rest[s]=true;
+       
+    for(int u:adj[s]){
+        if(visited[u]==false){
+           if(dfs(adj,visited,u,rest))
+                return true;
+        }else if(rest[u]==true)
             return true;
     }
-
+    rest[s]=false;
     return false;
 }
 
 bool isCyclic(int v, vector<int> adj[]){
 
     vector<int> visited(v, 0);
+    vector<int> rest(v, 0);
     bool flag = false;
     for(int i=0; i<v; i++){
-        visited[i] = 1;
-        for(int j=0; j<adj[i].size(); j++){
-            flag = isCyclicUtil(adj, visited, adj[i][j]);
-            if(flag == true)
+        if(visited[i] == 0){
+            if(dfs(adj, visited, i, rest))
                 return true;
         }
-        visited[i] = 0;
     }
     return false;
 
