@@ -3,9 +3,7 @@ using namespace std;
 
 void maxProfit(int price[], int n){
 
-    int profit[n];
-    for(int i=0; i<n; i++)
-        profit[i]=0;
+    int profit[n] = {0};
 
     int max_price=price[n-1];
     for(int i=n-2; i>=0; i--){
@@ -14,6 +12,8 @@ void maxProfit(int price[], int n){
         
         profit[i] = max(profit[i+1], max_price - price[i]);
     }
+
+    for(int i=0; i<n; i++) cout<<profit[i]<<" ";
 
     int min_price = price[0];
     for(int i=1; i<n;i++){

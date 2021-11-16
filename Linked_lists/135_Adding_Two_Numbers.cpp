@@ -107,12 +107,12 @@ int main(){
     node *first = NULL;
     insertAtTail(first, 9);
     insertAtTail(first, 9);
-    insertAtTail(first, 9);
+    // insertAtTail(first, 9);
 
     node *second = NULL;
-    insertAtTail(second, 2);
-    insertAtTail(second, 4);
-    insertAtTail(second, 5);
+    insertAtTail(second, 3);
+    insertAtTail(second, 7);
+    // insertAtTail(second, 5);
 
     add(first, second);
     

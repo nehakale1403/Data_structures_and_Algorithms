@@ -2,9 +2,9 @@
 using namespace std;
 
 int main(){
-
     int n;
     cin>>n;
+
     int arr[n];
     for(int i=0; i<n; i++) cin>>arr[i];
 
@@ -13,8 +13,8 @@ int main(){
         mp[arr[i]]++;
     }
 
-    for(auto i: mp){
-        if(i.second == 1)
-            cout<<i.first;
+    for(auto it: mp){
+        if(it.second == 1)
+            cout<<it.first;
     }
 }

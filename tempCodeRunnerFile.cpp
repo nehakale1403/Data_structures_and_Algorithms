@@ -1,52 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool parenthesisMatching(string s){
-    int n = s.length();
-    stack<char> st;
+void processArray(int arr[], int n){
     for(int i=0; i<n; i++){
-        if(s[i] == '(' || s[i] == '{' || s[i] == '[' ){
-            st.push(s[i]);
-            continue;
-        }else{
-            if(st.empty())
-                return false;
-
-            if(s[i] == ')'){
-                if(st.top() == '('){
-                    st.pop();
-                }else{
-                    return false;
-                }    
-            }
-            if(s[i] == ']'){
-                if(st.top() == '['){
-                    st.pop();
-                }else{
-                    return false;
-                }    
-            }
-            if(s[i] == '}'){
-                if(st.top() == '{'){
-                    st.pop();
-                }else{
-                    return false;
-                }    
-            }
+        if(arr[i] % 10 == 6 && arr[i] < 55){
+            arr[i] = -5;
+        }else if(arr[i] %10 == 6){
+            arr[i] = -2;
+        }else if(arr[i] < 55){
+            arr[i] = -4;
         }
     }
-    if(st.empty())
-        return true;
-    else
-        return false;
 }
 
 int main(){
-    string s;
-    cin>>s;
+    int n;
+    cin>>n;
 
-    if(parenthesisMatching(s)){
-        cout<<"Yes"<<endl;
-    }else
-        cout<<"No"<<endl;
+    int arr[n];
+    for(int i=0; i<n; i++) cin>>arr[i];
+
+    processArray(arr, n);
+    vector<int> array;
+
+    for(int i=0; i<n; i++) cout<<arr[i];
 }
