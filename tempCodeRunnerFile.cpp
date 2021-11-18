@@ -1,27 +1,59 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void processArray(int arr[], int n){
-    for(int i=0; i<n; i++){
-        if(arr[i] % 10 == 6 && arr[i] < 55){
-            arr[i] = -5;
-        }else if(arr[i] %10 == 6){
-            arr[i] = -2;
-        }else if(arr[i] < 55){
-            arr[i] = -4;
+class Node{
+    public:
+    int data;
+    Node *next;
+
+    
+        Node(int val){
+            data = val;
+            next = NULL;
         }
+
+       
+};
+
+void insertAtTail(Node* &head, int val){
+
+    Node *temp = new Node(val);
+    if(head == NULL){
+        head = temp;
+    }else{
+        // head 1 2 3 4 5->NULL
+        Node * p = head;
+        while(p->next != NULL){
+            p = p->next;
+        }
+        p->next = temp;
     }
 }
 
-int main(){
-    int n;
-    cin>>n;
-
-    int arr[n];
-    for(int i=0; i<n; i++) cin>>arr[i];
-
-    processArray(arr, n);
-    vector<int> array;
-
-    for(int i=0; i<n; i++) cout<<arr[i];
+void display(Node *head){
+    Node *p = head;
+    while(p != NULL){
+        cout<<p->data<<" ";
+        p = p->next;
+    }
 }
+
+void insertAtHead(Node *&head, int val){
+    Node* temp = new Node(val);
+
+    temp->next = head;
+    head = temp;
+}
+
+int main(){
+
+
+    Node *head = NULL;
+    insertAtHead(head, 2);
+
+
+    display(head);
+
+}
+
+//head->4 ->2 -> NULL
