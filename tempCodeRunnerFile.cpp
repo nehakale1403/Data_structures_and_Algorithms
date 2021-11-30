@@ -3,90 +3,50 @@ using namespace std;
 
 class Node{
     public:
-        int data;
-        Node *next;
+    int data;
+    Node *left;
+    Node *right;
 
-        Node(int val){
-            data = val;
-            next = NULL;
-        }
+    Node(int val){
+        data = val;
+        left = NULL;
+        right = NULL;
+    }
 };
 
-class Queue{
-
-    Node* front;
-    Node* rear;
-    int size;
+class Tree{
     public:
-        Queue(int a){
-            front = NULL;
-            rear = NULL;
-            size=0;
-        }
+    Node* root;
 
-        void enqueue(int data){
-            Node* temp = new Node(data);
-            if(front == NULL){
-                front = rear = temp;
-            }else{
-                rear->next = temp;
-                rear = temp;
-            }
+    void inorder(Node* root){
+        if(!root){
+            return;
         }
-        
-        void dequeue(){
-            if(isEmpty()){
-                cout<<"Queue is empty"<<endl;
-            }else if(front == rear){
-                Node *p = front;
-                delete(p);
-                front = rear = NULL;
-            }else{
-                Node* p = front;
-                front = front->next;
-                delete(p);
-            }   
+        inorder(root->left);
+        cout<<root->data<<" ";
+        inorder(root->right);
+    }
+
+    Node* insertElement(Node* root, int data){
+        cout<<"here"<<endl;
+        if(root == NULL){
+            return new Node(data);
+        }else if(root->data == data){
+            return root;
+        }else if(root->data > data){
+            root->left = insertElement(root->left, data);
+        }else{
+            root->right = insertElement(root->right, data);
         }
-
-        bool isEmpty(){
-            if(front == NULL)
-                return true;
-            return false;
-        }
-
-        void display(){
-            Node *p = front;
-            while(p != NULL){
-                cout<<p->data<<" ";
-                p = p->next;
-            }
-            cout<<endl;
-        }
-
-        void sizeQ(){
-            Node *p = front;
-            int count=0;
-            while(p != NULL){
-                count++;
-                p = p->next;
-            }
-
-            cout<<count<<endl;
-        }
-
+    }
 };
-
 
 int main(){
 
-    Queue q1(5);
-    q1.enqueue(1);
-    q1.enqueue(2);
-    q1.enqueue(3);
-    q1.enqueue(4);
-    q1.enqueue(5);
-    q1.display();
-    q1.dequeue();
-    q1.display();
-    q1.sizeQ();
+    Tree t;
+    t.insertElement(t.root, 2);
+    t.insertElement(t.root, 3);
+    t.insertElement(t.root, 1);
+
+    t.inorder(t.root);
 }
