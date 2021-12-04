@@ -36,3 +36,12 @@ int main(){
 
     cout<<knapsack01(n, w, weights, profit);
 }
+
+int fact(int n){
+    if(memo.find(n) != memo.end())
+        return memo[n];
+    if(n == 1)
+        return 1;
+    memo[n] = n * fact(n-1);
+    return memo[n];
+}
