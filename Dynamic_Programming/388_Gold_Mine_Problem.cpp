@@ -19,7 +19,7 @@ int getMaxGold(int M[][4], int m, int n){
     }
     int ans = 0;
     for (int i = 0; i < n; i++) {
-    ans = max(ans, dp[i][0]);
+        ans = max(ans, dp[i][0]);
     }
     return ans;
 }
