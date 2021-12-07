@@ -1,27 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int getMaxGold(int M[][4], int m, int n){
+int getMaxGold(int gold[][4], int m, int n){
 
-    int dp[n + 1][m + 1];
-    memset(dp, 0, sizeof(dp));
-    for (int j = m - 1; j >= 0; j--) {
-        for (int i = 0; i < n; i++) {
-            if (j == m - 1) // last column
-                dp[i][j] = M[i][j];
-            else if (i == 0) //first row
-                dp[i][j] = M[i][j] + max(dp[i][j + 1], dp[i + 1][j + 1]);
-            else if (i == n - 1) // last row
-                dp[i][j] = M[i][j] + max(dp[i][j + 1], dp[i - 1][j + 1]);
-            else // all other cases
-                dp[i][j] = M[i][j] + max(dp[i][j + 1], max(dp[i - 1][j + 1], dp[i + 1][j + 1]));
+    for(int col=n-2; col>=0; col--){
+        for(int row = 0; row<m; row++){
+            int right = gold[row][col+1];
+            int right_up = (row == 0)? 0 :gold[row-1][col+1];
+            int right_down = (row == m-1)? 0 :gold[row+1][col+1];
+
+            gold[row][col]= gold[row][col] + max({right, right_up, right_down});
         }
     }
-    int ans = 0;
-    for (int i = 0; i < n; i++) {
-        ans = max(ans, dp[i][0]);
-    }
-    return ans;
+
+    int res= gold[0][0];
+    for(int i=1; i<m; i++)
+        res= max(res, gold[i][0]);
+    return res;
+
 }
 
 int main(){
