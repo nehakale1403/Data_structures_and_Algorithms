@@ -19,6 +19,7 @@ int criticalFloor(int n, int k){
             minn = res;
     }
     return memo[{n, k}] = minn + 1;
+    
 }
 
 int main(){
