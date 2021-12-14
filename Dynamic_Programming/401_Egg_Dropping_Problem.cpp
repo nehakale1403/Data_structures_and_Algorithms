@@ -26,5 +26,6 @@ int main(){
     int n, k;
     cin>>n>>k;
 
+    
     cout<<criticalFloor(n, k);
 }
