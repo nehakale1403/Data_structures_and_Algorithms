@@ -11,8 +11,10 @@ int minCost(int cost[], int n, int w){
 
     if(dp[n][w] != -1) return dp[n][w];
 
-    if(n+1 > w || cost[n] == -1) return dp[n][w] = minCost(cost, n-1, w);
-    else return dp[n][w] = min(minCost(cost, n-1, w), cost[n] + minCost(cost, n-1, w - (n+1))); 
+    if(n+1 > w || cost[n] == -1) 
+        return dp[n][w] = minCost(cost, n-1, w);
+    else 
+        return dp[n][w] = min(minCost(cost, n-1, w), cost[n] + minCost(cost, n-1, w - (n+1))); 
 }
 
 int main(){
