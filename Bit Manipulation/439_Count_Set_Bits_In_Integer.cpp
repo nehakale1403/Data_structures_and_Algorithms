@@ -1,13 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int countOnBits(int N){
+int countOnBits(int n){
     int count = 0;
        
-       while(N>0)
+       while(n != 0)
        {
+           int rsbm = n & -n; //rightmost set bit mask
+           n = n - rsbm;
            count++;
-           N = N & (N-1);
        }
        return count;
 }
@@ -17,5 +18,5 @@ int main(){
     int n;
     cin>>n;
 
-    countOnBits(n);
+    cout<<countOnBits(n);
 }
