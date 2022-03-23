@@ -16,7 +16,7 @@ string infixToPostfix(string s){
 
     string res;
     stack<char> st;
-
+    //a+b*c-d/e
     for(int i=0; i<s.length(); i++){
         char c = s[i];
 
